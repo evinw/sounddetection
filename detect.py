@@ -52,10 +52,13 @@ for epoch in range(10):
         inputs, labels = inputs.unsqueeze(1), labels.long()
 
         optimizer.zero_grad()
-
+        #forward pass    
         outputs = model(inputs)
+        # Calculate the loss
         loss = criterion(outputs, labels)
+        #Perform backpropagation on the loss with respect to the paramters of the model            
         loss.backward()
+        # perform gradient decent or adjust to ideal 
         optimizer.step()
 
         running_loss += loss.item()
